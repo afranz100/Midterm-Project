@@ -68,6 +68,43 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 
 
 # Results
+```{r}
+library(devtools)
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+devtools::install_github("crsh/papaja")
+
+midterm_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
+
+library(summarytools)
+
+view(dfSummary(midterm_data))
+
+# get means and SEs
+descriptive_data <- midterm_data %>% 
+  group_by(Condition) %>% 
+  summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
+            SEs = sd(Days_One_to_Seven_Number_of_Intrusions)/sqrt(length(Days_One_to_Seven_Number_of_Intrusions)))
+
+# Make the plot
+ggplot(descriptive_data, aes(x=Condition, y=means))+ 
+  geom_bar(stat="identity", aes(fill=Condition))+ 
+  geom_errorbar(aes(ymin=means-SEs,             
+                    ymax=means+SEs), width=.1) +
+  geom_point(data=midterm_data, aes(x=Condition, y=Days_One_to_Seven_Number_of_Intrusions), alpha=.5)+
+  geom_point(alpha=.20)+
+  ylab("Weekly Mean of Intrusive Memories")
+
+anova_results <- aov(Days_One_to_Seven_Number_of_Intrusions ~ Condition, midterm_data)
+
+apa_aov <- apa_print(summary(anova_results))
+
+
+```
+
+Using a between subjects one-factor ANOVA, with intervention type as the independent variable, I did not find that there was a significant difference between the four intervention groups (No-task control, Reactivation Plus tetris, Tetris only, Reactivation only). There was no main effect of intervention type `r apa_aov$full_result$Condition`. There was no significant reduction in traumatic memory reconsolidation between any of the task groups.
 
 # Discussion
 
