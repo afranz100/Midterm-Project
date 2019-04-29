@@ -1,0 +1,87 @@
+---
+title             : "Reanalysis of Psychological Paper: Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms"
+shorttitle        : "Reanalysis"
+
+author: 
+  - name          : "Ana-Louise Franz"
+    affiliation   : ""
+    corresponding : yes    # Define only one corresponding author
+    address       : "Postal address"
+    email         : "afranz100@gmail.com"
+
+affiliation:
+  - id            : "1"
+    institution   : "Brooklyn College"
+
+
+
+
+abstract: |
+  There are a few moments in the creation and recollection of memory where this process can be interrupted. This can be used to help people who are suffering from the results of tramatic memories. This study examined the process of reconsolidation, the recollection of a memory, to determine if there is a way to inturrupt this process using a cognitive task. The cognitive task used in this experiment was a simple game of Tetris. 
+
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "reconsolidation, cognitive task"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+
+
+# Methods
+
+## Participants
+52 participants (31 female, 21 males) which consisted of university students and the general public. 65% of the participants were students. 
+
+## Material
+The details of the trauma exposure and the  reconsolidation task are detailed in James et al. (2015)
+
+## Procedure
+The experiment was performed both in the lab and at home in the form of a diary. They watched a traumatic film and were then assinged to either the cognitive task group or the no task (control) group.
+
+## Data analysis
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+
+# Results
+
+# Discussion
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id = "refs"></div>
+\endgroup
