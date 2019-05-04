@@ -5,3 +5,10 @@
 \includegraphics{Midterm_Paper_files/figure-latex/unnamed-chunk-1-1.pdf}
 \caption{}
 \end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{Midterm_Paper_files/figure-latex/unnamed-chunk-2-1.pdf}
+\caption{}
+\end{figure*}
