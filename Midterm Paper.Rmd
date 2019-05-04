@@ -103,7 +103,7 @@ Using a between subjects one-factor ANOVA, with intervention type as the indepen
 
 # Discussion
 
-
+The omnibus one-factor ANOVA that was conducted did not show a significant difference between any of the groups. This was not the finding of the original paper. There are a number of possible reasons why this occured. Firstly, when conducting any type of null hypothesis testing, there is always a chance that a Type I error has been committed and the significant value was found only due to chance. Additionally, the reanalysis that I made could have committed a Type II error, where I did not reject the null (and claimed that there was an effect) when in reality there is an effect. 
 
 \newpage
 
