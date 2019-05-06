@@ -48,8 +48,6 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
-
-
 # Methods
 
 ## Participants
@@ -69,13 +67,15 @@ library(data.table)
 library(dplyr)
 library(ggplot2)
 
-devtools::install_github("crsh/papaja")
+#One time install of papaja, not needed every time!!!
+#devtools::install_github("crsh/papaja")
 
 midterm_data <- fread("https://raw.githubusercontent.com/CrumpLab/statisticsLab/master/data/Jamesetal2015Experiment2.csv")
 
+midterm_data$Condition <- as.factor(midterm_data$Condition)
 library(summarytools)
 
-view(dfSummary(midterm_data))
+#view(dfSummary(midterm_data))
 
 # get means and SEs
 descriptive_data <- midterm_data %>% 
@@ -108,6 +108,7 @@ The omnibus one-factor ANOVA that was conducted did not show a significant diffe
 \newpage
 
 # Power Analysis 
+A power analysis was conducted, and the graph is shown on the final page of this paper.
 
 ```{r}
 # function to run a simulated t-test
@@ -119,9 +120,11 @@ poweranalysis <- function(x){
   df <- data.frame(condition = as.factor(rep(c("A","B","C","D"),each=13)),
                    DV = c(A,B,C,D))
   aov_results <- summary(aov(DV~condition,df))
+  
   #return the pvalue
   return(aov_results[[1]]$`Pr(>F)`[1])
 }
+
 # vector of effect sizes
 effect_sizes <- seq(.1,2,.1)
 
@@ -131,8 +134,10 @@ power <- sapply(effect_sizes,
             sims <- replicate(1000,poweranalysis(x))
             sim_power <- length(sims[sims<.05])/length(sims)
             return(sim_power)})
+
 # combine into dataframe
 plot_df <- data.frame(effect_sizes,power)
+
 # plot the power curve
 ggplot(plot_df, aes(x=effect_sizes,
                     y=power))+
